@@ -9,3 +9,7 @@ C:\Users\Progfieldadmin\source\repos\ProgLibrary.Core\obj\Debug\net5.0\ProgLibra
 C:\Users\Progfieldadmin\source\repos\ProgLibrary.Core\obj\Debug\net5.0\ProgLibrary.Core.dll
 C:\Users\Progfieldadmin\source\repos\ProgLibrary.Core\obj\Debug\net5.0\ref\ProgLibrary.Core.dll
 C:\Users\Progfieldadmin\source\repos\ProgLibrary.Core\obj\Debug\net5.0\ProgLibrary.Core.pdb
+C:\Users\Progfieldadmin\source\repos\ProgLibrary.Core\bin\Debug\net5.0\ProgLibrary.Core.runtimeconfig.json
+C:\Users\Progfieldadmin\source\repos\ProgLibrary.Core\bin\Debug\net5.0\ProgLibrary.Core.runtimeconfig.dev.json
+C:\Users\Progfieldadmin\source\repos\ProgLibrary.Core\obj\Debug\net5.0\ProgLibrary.Core.genruntimeconfig.cache
+C:\Users\Progfieldadmin\source\repos\ProgLibrary.Core\obj\Debug\net5.0\ProgLibrary.Core.csproj.AssemblyReference.cache

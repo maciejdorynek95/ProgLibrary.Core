@@ -5,12 +5,12 @@ namespace ProgLibrary.Core.Domain
     public class Reservation : Entity
     {
 
-        public Guid? User { get; protected set; }
-        public Guid? Book { get; protected set; }
+        public Guid? UserId { get; protected set; }
+        public Guid? BookId { get; protected set; }
         public DateTime ReservationTimeFrom { get; set; }
         public DateTime ReservationTimeTo { get; set; }
         public DateTime ReservationDate { get; set; }
-        public bool Reserved => User.HasValue; // Sprwadzic
+        public bool Active => ReservationTimeFrom <= ReservationTimeTo; // Sprwadzic
 
         protected Reservation()
         {
@@ -19,8 +19,8 @@ namespace ProgLibrary.Core.Domain
         public Reservation(Guid id, Guid userId, Guid bookId)
         {
             Id = id;
-            User = userId;
-            Book = bookId;
+            UserId = userId;
+            BookId = bookId;
 
         }
     }

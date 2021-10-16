@@ -12,7 +12,7 @@ namespace ProgLibrary.Core.Repositories
         Task<Reservation> GetAsync(Guid id);
         Task<Reservation> GetASync(User email);
         Task<IEnumerable<Reservation>> BrowseAsync(Book book);
-        Task AddASync(Reservation reservation);
+        Task AddAsync(Reservation reservation);
         Task UpdateAsync(Reservation reservation);
         Task DeleteAsync(Reservation reservation);
     }
