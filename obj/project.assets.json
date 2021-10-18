@@ -5744,28 +5744,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Progfieldadmin\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\dorynekm\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Progfieldadmin\\source\\repos\\ProgLibrary.Core\\ProgLibrary.Core.csproj",
+      "projectUniqueName": "C:\\Users\\dorynekm\\source\\repos\\maciejdorynek95\\ProgLibrary.Core\\ProgLibrary.Core.csproj",
       "projectName": "ProgLibrary.Core",
-      "projectPath": "C:\\Users\\Progfieldadmin\\source\\repos\\ProgLibrary.Core\\ProgLibrary.Core.csproj",
-      "packagesPath": "C:\\Users\\Progfieldadmin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Progfieldadmin\\source\\repos\\ProgLibrary.Core\\obj\\",
+      "projectPath": "C:\\Users\\dorynekm\\source\\repos\\maciejdorynek95\\ProgLibrary.Core\\ProgLibrary.Core.csproj",
+      "packagesPath": "C:\\Users\\dorynekm\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\dorynekm\\source\\repos\\maciejdorynek95\\ProgLibrary.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Progfieldadmin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\dorynekm\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -5830,7 +5827,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.303\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

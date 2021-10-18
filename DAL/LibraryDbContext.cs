@@ -6,7 +6,7 @@ namespace ProgLibrary.Core.DAL
     public class LibraryDbContext : DbContext
     {
         public DbSet<Book> Books { get; set; }
-        //public DbSet<User> Users { get; set; }
+
         public DbSet<Reservation> Reservations { get; set; }
   
 
@@ -14,6 +14,12 @@ namespace ProgLibrary.Core.DAL
         {
           
         }
-       
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>()
+                .ToTable("AspNetUsers", t => t.ExcludeFromMigrations());
+        }
+
     }
 }

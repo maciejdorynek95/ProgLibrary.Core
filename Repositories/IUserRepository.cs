@@ -1,4 +1,5 @@
-﻿using ProgLibrary.Core.Domain;
+﻿using Microsoft.AspNetCore.Identity;
+using ProgLibrary.Core.Domain;
 using System;
 using System.Threading.Tasks;
 

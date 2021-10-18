@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using ProgLibrary.Core.DAL;
 using ProgLibrary.Core.Repositories;
 
 namespace ProgLibrary.Core.Domain
 {
     public class Book : Entity
     {
-        private ISet<Reservation> _reservations = new HashSet<Reservation>(); // aby kolekcja IEnumerable była tylko dla odczytu
-        
+      
+        private readonly LibraryDbContext _context;
+        public Book(LibraryDbContext context)
+        {
+            _context = context;
+        }
 
         public string Title { get; protected set; }
         public string Author { get; protected set; }
@@ -17,15 +22,12 @@ namespace ProgLibrary.Core.Domain
         public string Description { get; set; }
         public DateTime UpdatedAt { get; set; }
 
-        public IEnumerable<Reservation> Reservations => _reservations; // dodać available books
-        [NotMapped]
-        public IEnumerable<Reservation> UsingReservations => _reservations.Where(b=>b.Active);
-        [NotMapped]
-        public IEnumerable<Reservation> AvailibleReservations => _reservations.Except(UsingReservations); // wykluaczając aktywne
-        protected Book()
-        {
+        //public IEnumerable<Reservation> Reservations => _context.Reservations;
+        //[NotMapped]
+        //public IEnumerable<Reservation>? UsingReservations => _context.Reservations.Where(b=>b.Active);
+        //[NotMapped]
+        //public IEnumerable<Reservation>? AvailibleReservations => _context.Reservations.Except(UsingReservations); // wykluaczając aktywne
 
-        }
 
         public void SetTitle(string title)
         {
@@ -81,10 +83,5 @@ namespace ProgLibrary.Core.Domain
 
         }
 
-        //public async void AddReservation(Guid id,Guid userId,Guid bookId)
-        //{
-        //    var reservation = new Reservation(id, userId, bookId);
-        //    _reservations.Add(reservation);
-        //}
     }
 }

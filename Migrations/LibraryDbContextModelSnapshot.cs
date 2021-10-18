@@ -2,17 +2,15 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProgLibrary.Core.DAL;
 
-namespace ProgLibrary.Core.Migrations.LibraryDb
+namespace ProgLibrary.Core.Migrations
 {
     [DbContext(typeof(LibraryDbContext))]
-    [Migration("20211015194252_NewMigration")]
-    partial class NewMigration
+    partial class LibraryDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,7 +48,7 @@ namespace ProgLibrary.Core.Migrations.LibraryDb
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("BookId")
+                    b.Property<Guid>("BookId")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("ReservationDate")
@@ -62,12 +60,14 @@ namespace ProgLibrary.Core.Migrations.LibraryDb
                     b.Property<DateTime>("ReservationTimeTo")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("UserId")
+                    b.Property<Guid>("UserId")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BookId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Reservations");
                 });
@@ -84,9 +84,6 @@ namespace ProgLibrary.Core.Migrations.LibraryDb
                     b.Property<string>("ConcurrencyStamp")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Email")
                         .HasColumnType("TEXT");
 
@@ -99,16 +96,10 @@ namespace ProgLibrary.Core.Migrations.LibraryDb
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("NormalizedEmail")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("NormalizedUserName")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Password")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PasswordHash")
@@ -119,9 +110,6 @@ namespace ProgLibrary.Core.Migrations.LibraryDb
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("Role")
-                        .HasColumnType("TEXT");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("TEXT");
@@ -134,19 +122,26 @@ namespace ProgLibrary.Core.Migrations.LibraryDb
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("AspNetUsers", t => t.ExcludeFromMigrations());
                 });
 
             modelBuilder.Entity("ProgLibrary.Core.Domain.Reservation", b =>
                 {
-                    b.HasOne("ProgLibrary.Core.Domain.Book", null)
-                        .WithMany("Reservations")
-                        .HasForeignKey("BookId");
-                });
+                    b.HasOne("ProgLibrary.Core.Domain.Book", "Book")
+                        .WithMany()
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-            modelBuilder.Entity("ProgLibrary.Core.Domain.Book", b =>
-                {
-                    b.Navigation("Reservations");
+                    b.HasOne("ProgLibrary.Core.Domain.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }
