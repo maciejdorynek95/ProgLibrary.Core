@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using ProgLibrary.Core.Domain;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ProgLibrary.Core.Repositories
@@ -9,7 +10,8 @@ namespace ProgLibrary.Core.Repositories
     {
         Task<User> GetAsync(Guid id);
         Task<User> GetAsync(string email);
-        Task AddAsync(User user);
+        Task<IEnumerable<Reservation>> GetUserReservations(Guid userId);
+        Task AddAsync(User user,string password, string role);
         Task UpdateAsync(User user);
         Task DeleteAsync(User user);
     }

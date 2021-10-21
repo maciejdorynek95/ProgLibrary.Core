@@ -19,12 +19,12 @@ namespace ProgLibrary.Core.Domain
         public string Title { get; protected set; }
         public string Author { get; protected set; }
         public DateTime ReleaseDate { get; protected set; }
-        public string Description { get; set; }
+        public string Description { get; protected set; }
         public DateTime UpdatedAt { get; set; }
-
-        //public IEnumerable<Reservation> Reservations => _context.Reservations;
+        [NotMapped]
+        public IEnumerable<Reservation> Reservations => _context?.Reservations?.ToList();
         //[NotMapped]
-        //public IEnumerable<Reservation>? UsingReservations => _context.Reservations.Where(b=>b.Active);
+        //public IEnumerable<Reservation> UsingReservations => _context?.Reservations?.Where(b => b.Active);
         //[NotMapped]
         //public IEnumerable<Reservation>? AvailibleReservations => _context.Reservations.Except(UsingReservations); // wykluaczając aktywne
 
@@ -49,6 +49,16 @@ namespace ProgLibrary.Core.Domain
             UpdatedAt = DateTime.UtcNow;
         }
 
+        public void SetReleasedDate(DateTime releasedDate)
+        {
+            if (releasedDate > DateTime.UtcNow)
+            {
+                throw new Exception($"Książka z id '{Id}' nie może mieć przyszłej daty");
+            }
+
+            ReleaseDate = releasedDate;
+            UpdatedAt = DateTime.UtcNow;
+        }
 
         public void SetDescription(string description)
         {
@@ -60,16 +70,7 @@ namespace ProgLibrary.Core.Domain
             UpdatedAt = DateTime.UtcNow;
         }
 
-        public void SetReleasedDate(DateTime releasedDate)
-        { 
-            if (releasedDate > DateTime.UtcNow  )
-            {
-                throw new Exception($"Książka z id '{Id}' nie może mieć przyszłej daty");
-            }
-
-            ReleaseDate = releasedDate;
-            UpdatedAt = DateTime.UtcNow;
-        }
+      
 
 
         public Book(Guid id, string title, string author, DateTime releaseDate, string description)
