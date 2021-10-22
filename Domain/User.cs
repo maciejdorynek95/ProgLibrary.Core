@@ -20,10 +20,12 @@ namespace ProgLibrary.Core.Domain
         public virtual IEnumerable<Reservation> Reservations => _context?.Reservations?.AsEnumerable();
 
          
-        protected User()
+        public User()
         {
             Id = Guid.NewGuid();
         }
+
+  
 
         public User(Guid id, string name, string email)
         {

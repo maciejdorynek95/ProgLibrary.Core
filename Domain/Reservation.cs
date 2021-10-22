@@ -1,26 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using ProgLibrary.Core.Repositories;
+﻿using ProgLibrary.Core.DAL;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ProgLibrary.Core.Domain
 {
     public class Reservation : Entity
     {
-
-        private readonly IUserRepository _userRepository;
-        private readonly IBookRepository _bookRepository;
-        private  IReservationRepository _reservationRepository;
-
-        public Reservation(IUserRepository userRepository, IBookRepository bookRepository, IReservationRepository reservationRepository)
-        {
-            _userRepository = userRepository;
-            _bookRepository = bookRepository;
-            _reservationRepository = reservationRepository;
-        }
-
-
         public Guid UserId { get; protected set; }
         public Guid BookId { get; protected set; }
 
@@ -35,23 +22,38 @@ namespace ProgLibrary.Core.Domain
         public virtual Book Book { get;  set; }
 
 
-        public Reservation(Guid id, Guid userId, Guid bookId, DateTime reservationTimeFrom, DateTime reservationTimeTo, DateTime createdAt)
+        public Reservation(Guid id, Guid userId, Guid bookId, DateTime reservationTimeFrom, DateTime reservationTimeTo )
         {
-
+            Id = id;
             SetUserId(userId);
             SetBookId(bookId);
             SetReservationTimeFrom(reservationTimeFrom);
             SetReservationTimeTo(reservationTimeTo);
-            SetCreatedAt(createdAt);
+            CreatedAt = DateTime.UtcNow;
         }
 
 
 
         private  void SetUserId(Guid userId)
-        => UserId = (_reservationRepository.GetAsyncReservation(userId)).Result.UserId; ///kurwa brak czasu...
+        {
+            if (userId == Guid.Empty)
+            {
+                throw new Exception("Błąd Guid dla userId");
+            }
+            UserId = userId;
+        }
+
+
+
 
         private  void SetBookId(Guid bookId)
-       => BookId = _reservationRepository.GetAsyncReservation(bookId).Result.BookId;
+        {
+            if (bookId == Guid.Empty)
+            {
+                throw new Exception("Błąd Guid dla bookId");
+            }
+            BookId = bookId;
+        }
 
         private void SetReservationTimeFrom(DateTime reservationTimeFrom)
         {
@@ -73,16 +75,5 @@ namespace ProgLibrary.Core.Domain
 
         }
 
-        private void SetCreatedAt(DateTime createdAt)
-        {
-            if (createdAt == DateTime.MinValue || createdAt == DateTime.MaxValue)
-            {
-                throw new Exception($"Błędnie wprowadzona data : {createdAt}");
-            }
-            CreatedAt = DateTime.UtcNow;
-
-
-
-        }
     }
 }

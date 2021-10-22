@@ -10,9 +10,10 @@ namespace ProgLibrary.Core.Repositories
     public interface IReservationRepository
     {
 
-        Task<List<Reservation>> GetAsyncReservations(Guid userId);
-        Task<Reservation> GetAsyncReservation(Guid bookId);
-        Task<Reservation> GetAsyncReservationByUser(Guid userId);
+        Task<Reservation> GetAsync(Guid reservationId);
+        Task<Reservation> GetAsyncByBook(Guid bookId);
+        [Obsolete]Task<Reservation> GetAsyncByUser(Guid bookId); // Obsolete
+        Task<IEnumerable<Reservation>> GetAsyncListByBook(Guid bookId);
         Task<IEnumerable<Reservation>> BrowseAsync(string bookTitle = "");
         Task AddAsync(Reservation reservation);
         Task UpdateAsync(Reservation reservation);

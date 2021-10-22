@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NpntTU44DljiVLGJ+XnU+wFRvQTQOV7AhUkkxroj4diPm2OUD2eJgNt3V9b7x1oJRNAiamyWvh90jgY6hmpZEw==",
+  "dgSpecHash": "XZmh/P0lTGkfUb6VIdPr9tnHstXkVHqO0FiAjrXyJ0F4GCfja4zu3IA2C7VOM3HWq27CzSjavS8Ky5e6OVGq8A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dorynekm\\source\\repos\\maciejdorynek95\\ProgLibrary.Core\\ProgLibrary.Core.csproj",
+  "projectFilePath": "C:\\Users\\dorynekm\\Source\\Repos\\maciejdorynek95\\ProgLibrary.Core\\ProgLibrary.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dorynekm\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\dorynekm\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.11\\microsoft.aspnetcore.cryptography.internal.5.0.11.nupkg.sha512",
