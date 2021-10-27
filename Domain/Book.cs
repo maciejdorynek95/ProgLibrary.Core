@@ -22,7 +22,7 @@ namespace ProgLibrary.Core.Domain
         public string Description { get; protected set; }
         public DateTime UpdatedAt { get; set; }
         [NotMapped]
-        public IEnumerable<Reservation> Reservations => _context?.Reservations?.ToList();
+        public  IEnumerable<Reservation> Reservations => _context?.Reservations?.AsEnumerable();
         //[NotMapped]
         //public IEnumerable<Reservation> UsingReservations => _context?.Reservations?.Where(b => b.Active);
         //[NotMapped]
