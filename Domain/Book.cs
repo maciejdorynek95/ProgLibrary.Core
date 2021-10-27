@@ -23,10 +23,6 @@ namespace ProgLibrary.Core.Domain
         public DateTime UpdatedAt { get; set; }
         [NotMapped]
         public  IEnumerable<Reservation> Reservations => _context?.Reservations?.AsEnumerable();
-        //[NotMapped]
-        //public IEnumerable<Reservation> UsingReservations => _context?.Reservations?.Where(b => b.Active);
-        //[NotMapped]
-        //public IEnumerable<Reservation>? AvailibleReservations => _context.Reservations.Except(UsingReservations); // wykluaczając aktywne
 
 
         public void SetTitle(string title)
