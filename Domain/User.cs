@@ -14,9 +14,8 @@ namespace ProgLibrary.Core.Domain
         {
             _context = context;
         }
-
         [NotMapped]
-        public virtual string[] Roles { get; protected set; } // tu byla zmiana na virtual
+        public virtual string[] Roles { get; protected set; } 
         public virtual IEnumerable<Reservation> Reservations => _context?.Reservations?.AsEnumerable();
 
          
@@ -24,9 +23,6 @@ namespace ProgLibrary.Core.Domain
         {
             Id = Guid.NewGuid();
         }
-
-  
-
         public User(Guid id, string name, string email)
         {
             Id = id;          
@@ -34,7 +30,6 @@ namespace ProgLibrary.Core.Domain
             Email = email;
            
         }
-
         public void SetRoles(params string[] roles)
         {
             Roles = new string[roles.Length];
