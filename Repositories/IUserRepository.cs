@@ -10,6 +10,7 @@ namespace ProgLibrary.Core.Repositories
     {
         Task<User> GetAsync(Guid id);
         Task<User> GetAsync(string email);
+        Task<IEnumerable<User>> BrowseAsync(string role);
         Task<IEnumerable<Reservation>> GetUserReservations(Guid userId);
         Task AddAsync(User user,string password, string role);
         Task UpdateAsync(User user);

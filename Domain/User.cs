@@ -30,7 +30,7 @@ namespace ProgLibrary.Core.Domain
             Email = email;
            
         }
-        public void SetRoles(params string[] roles)
+        public void GetRoles(params string[] roles)
         {
             Roles = new string[roles.Length];
             for (int i = 0; i < Roles.Length; i++)

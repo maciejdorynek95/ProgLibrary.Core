@@ -1,15 +1,14 @@
-﻿using System;
+﻿using ProgLibrary.Core.DAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using ProgLibrary.Core.DAL;
-using ProgLibrary.Core.Repositories;
 
 namespace ProgLibrary.Core.Domain
 {
     public class Book : Entity
     {
-      
+
         private readonly LibraryDbContext _context;
         public Book(LibraryDbContext context)
         {
@@ -22,7 +21,7 @@ namespace ProgLibrary.Core.Domain
         public string Description { get; protected set; }
         public DateTime UpdatedAt { get; set; }
         [NotMapped]
-        public  IEnumerable<Reservation> Reservations => _context?.Reservations?.AsEnumerable();
+        public IEnumerable<Reservation> Reservations => _context?.Reservations?.AsEnumerable();
 
 
         public void SetTitle(string title)
@@ -32,7 +31,7 @@ namespace ProgLibrary.Core.Domain
                 throw new Exception($"Książka z id '{Id}' nie może miec pustego tytułu");
             }
             Title = title;
-            UpdatedAt = DateTime.UtcNow;
+
         }
 
         public void SetAuthor(string author)
@@ -42,7 +41,7 @@ namespace ProgLibrary.Core.Domain
                 throw new Exception($"Książka z id '{Id}' nie może miec pustego autora");
             }
             Author = author;
-            UpdatedAt = DateTime.UtcNow;
+
         }
 
         public void SetReleasedDate(DateTime releasedDate)
@@ -53,7 +52,7 @@ namespace ProgLibrary.Core.Domain
             }
 
             ReleaseDate = releasedDate;
-            UpdatedAt = DateTime.UtcNow;
+
         }
 
         public void SetDescription(string description)
@@ -63,10 +62,10 @@ namespace ProgLibrary.Core.Domain
                 throw new Exception($"Książka z id '{Id}' nie może miec pustego opisu");
             }
             Description = description;
-            UpdatedAt = DateTime.UtcNow;
+
         }
 
-      
+
 
 
         public Book(Guid id, string title, string author, DateTime releaseDate, string description)
@@ -76,7 +75,7 @@ namespace ProgLibrary.Core.Domain
             SetAuthor(author);
             SetDescription(description);
             SetReleasedDate(releaseDate);
-            
+            UpdatedAt = DateTime.UtcNow;
 
         }
 
