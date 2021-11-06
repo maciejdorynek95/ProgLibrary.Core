@@ -2,7 +2,7 @@
 
 namespace ProgLibrary.Core.Migrations
 {
-    public partial class addroles : Migration
+    public partial class UpdateUserDomain3 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

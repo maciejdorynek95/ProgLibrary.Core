@@ -10,8 +10,8 @@ namespace ProgLibrary.Core.Repositories
         Task<Book> GetAsync(Guid id);
         Task<Book> GetAsync(string name);
         Task<IEnumerable<Book>> BrowseAsync(string title = "");
-        Task<int> AddAsync(Book book);
-        Task<int> UpdateAsync(Book book);
-        Task<int> DeleteAsync(Book book);
+        Task<bool> AddAsync(Book book);
+        Task<bool> UpdateAsync(Book book);
+        Task<bool> DeleteAsync(Book book);
     }
 }

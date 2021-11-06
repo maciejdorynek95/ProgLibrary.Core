@@ -9,8 +9,8 @@ using ProgLibrary.Core.DAL;
 namespace ProgLibrary.Core.Migrations
 {
     [DbContext(typeof(LibraryDbContext))]
-    [Migration("20211021125703_init5")]
-    partial class init5
+    [Migration("20211106155625_UpdateUserDomain3")]
+    partial class UpdateUserDomain3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

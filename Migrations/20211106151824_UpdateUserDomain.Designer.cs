@@ -9,8 +9,8 @@ using ProgLibrary.Core.DAL;
 namespace ProgLibrary.Core.Migrations
 {
     [DbContext(typeof(LibraryDbContext))]
-    [Migration("20211019154715_addroles")]
-    partial class addroles
+    [Migration("20211106151824_UpdateUserDomain")]
+    partial class UpdateUserDomain
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,7 +53,7 @@ namespace ProgLibrary.Core.Migrations
                     b.Property<Guid>("BookId")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("ReservationDate")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("ReservationTimeFrom")

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using ProgLibrary.Core.DAL;
+using ProgLibrary.Core.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -14,15 +15,14 @@ namespace ProgLibrary.Core.Domain
         {
             _context = context;
         }
-        [NotMapped]
-        public virtual string[] Roles { get; protected set; } 
-        public virtual IEnumerable<Reservation> Reservations => _context?.Reservations?.AsEnumerable();
 
-         
-        public User()
-        {
-            Id = Guid.NewGuid();
-        }
+        [NotMapped]
+        public virtual string[] Roles { get; protected set; }
+        //[NotMapped]
+        //  public IEnumerable<Reservation> Reservations => _context.Reservations.AsEnumerable();
+        [NotMapped]
+        public  IEnumerable<Reservation> Reservations { get; protected set; }
+
         public User(Guid id, string name, string email)
         {
             Id = id;          
@@ -38,6 +38,11 @@ namespace ProgLibrary.Core.Domain
                 Roles[i] = roles[i];
             }
         }
+        public void GetReservations(LibraryDbContext context)
+        {
+            Reservations = context.Reservations.ToList();
+        }
+      
 
     }
 }

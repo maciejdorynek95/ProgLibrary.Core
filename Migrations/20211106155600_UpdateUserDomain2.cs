@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ProgLibrary.Core.Migrations.AuthenticationDb
+namespace ProgLibrary.Core.Migrations
 {
-    public partial class init : Migration
+    public partial class UpdateUserDomain2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

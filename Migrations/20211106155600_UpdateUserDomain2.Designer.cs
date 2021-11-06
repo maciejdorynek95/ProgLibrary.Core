@@ -9,8 +9,8 @@ using ProgLibrary.Core.DAL;
 namespace ProgLibrary.Core.Migrations
 {
     [DbContext(typeof(LibraryDbContext))]
-    [Migration("20211018103130_init2")]
-    partial class init2
+    [Migration("20211106155600_UpdateUserDomain2")]
+    partial class UpdateUserDomain2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,7 +53,7 @@ namespace ProgLibrary.Core.Migrations
                     b.Property<Guid>("BookId")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("ReservationDate")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("ReservationTimeFrom")
@@ -136,7 +136,7 @@ namespace ProgLibrary.Core.Migrations
                         .IsRequired();
 
                     b.HasOne("ProgLibrary.Core.Domain.User", "User")
-                        .WithMany()
+                        .WithMany("Reservations")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -144,6 +144,11 @@ namespace ProgLibrary.Core.Migrations
                     b.Navigation("Book");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ProgLibrary.Core.Domain.User", b =>
+                {
+                    b.Navigation("Reservations");
                 });
 #pragma warning restore 612, 618
         }

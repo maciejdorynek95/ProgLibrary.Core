@@ -1,14 +1,14 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ProgLibrary.Core.Migrations.AuthenticationDb
+namespace ProgLibrary.Core.Migrations
 {
-    public partial class Reservations : Migration
+    public partial class UpdateUserDomain : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Book",
+                name: "Books",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
@@ -20,11 +20,11 @@ namespace ProgLibrary.Core.Migrations.AuthenticationDb
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Book", x => x.Id);
+                    table.PrimaryKey("PK_Books", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Reservation",
+                name: "Reservations",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
@@ -32,43 +32,43 @@ namespace ProgLibrary.Core.Migrations.AuthenticationDb
                     BookId = table.Column<Guid>(type: "TEXT", nullable: false),
                     ReservationTimeFrom = table.Column<DateTime>(type: "TEXT", nullable: false),
                     ReservationTimeTo = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    ReservationDate = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Reservation", x => x.Id);
+                    table.PrimaryKey("PK_Reservations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Reservation_AspNetUsers_UserId",
+                        name: "FK_Reservations_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Reservation_Book_BookId",
+                        name: "FK_Reservations_Books_BookId",
                         column: x => x.BookId,
-                        principalTable: "Book",
+                        principalTable: "Books",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reservation_BookId",
-                table: "Reservation",
+                name: "IX_Reservations_BookId",
+                table: "Reservations",
                 column: "BookId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reservation_UserId",
-                table: "Reservation",
+                name: "IX_Reservations_UserId",
+                table: "Reservations",
                 column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Reservation");
+                name: "Reservations");
 
             migrationBuilder.DropTable(
-                name: "Book");
+                name: "Books");
         }
     }
 }

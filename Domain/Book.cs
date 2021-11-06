@@ -21,7 +21,7 @@ namespace ProgLibrary.Core.Domain
         public string Description { get; protected set; }
         public DateTime UpdatedAt { get; set; }
         [NotMapped]
-        public IEnumerable<Reservation> Reservations => _context?.Reservations?.AsEnumerable();
+        public  IEnumerable<Reservation> Reservations => _context?.Reservations?.AsEnumerable();
 
 
         public void SetTitle(string title)

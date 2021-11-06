@@ -1,8 +1,6 @@
 ﻿using ProgLibrary.Core.Domain;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ProgLibrary.Core.Repositories
@@ -14,9 +12,9 @@ namespace ProgLibrary.Core.Repositories
         Task<Reservation> GetAsyncByBook(Guid bookId);
         [Obsolete]Task<Reservation> GetAsyncByUser(Guid bookId); // Obsolete
         Task<IEnumerable<Reservation>> GetAsyncListOfReservationsByBook(Guid bookId);
-        Task<IEnumerable<Reservation>> BrowseAsync(string bookTitle = "");
-        Task AddAsync(Reservation reservation);
-        Task UpdateAsync(Reservation reservation);
-        Task DeleteAsync(Reservation reservation);
+        Task<IEnumerable<Reservation>> BrowseAsync(string filter = "");
+        Task<bool> AddAsync(Reservation reservation);
+        Task<bool> UpdateAsync(Reservation reservation);
+        Task<bool> DeleteAsync(Reservation reservation);
     }
 }
