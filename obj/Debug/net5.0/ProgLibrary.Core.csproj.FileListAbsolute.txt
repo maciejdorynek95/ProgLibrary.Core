@@ -27,4 +27,3 @@ C:\Users\dorynekm\source\repos\maciejdorynek95\ProgLibrary.Core\obj\Debug\net5.0
 C:\Users\dorynekm\source\repos\maciejdorynek95\ProgLibrary.Core\obj\Debug\net5.0\ref\ProgLibrary.Core.dll
 C:\Users\dorynekm\source\repos\maciejdorynek95\ProgLibrary.Core\obj\Debug\net5.0\ProgLibrary.Core.pdb
 C:\Users\dorynekm\source\repos\maciejdorynek95\ProgLibrary.Core\obj\Debug\net5.0\ProgLibrary.Core.genruntimeconfig.cache
-C:\Users\dorynekm\Source\Repos\maciejdorynek95\ProgLibrary.Core\obj\Debug\net5.0\ProgLibrary.Core.csproj.AssemblyReference.cache

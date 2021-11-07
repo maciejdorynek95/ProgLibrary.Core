@@ -1,13 +1,21 @@
 ﻿using ProgLibrary.Core.DAL;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace ProgLibrary.Core.Domain
 {
     public class Reservation : Entity
     {
+        private readonly LibraryDbContext _booksContext;
+        private readonly AuthenticationDbContext _usersContext;
+        public Reservation(LibraryDbContext booksContext, AuthenticationDbContext usersContext)
+        {
+            _booksContext = booksContext;
+            _usersContext = usersContext;
+        }
+
         public Guid UserId { get; protected set; }
         public Guid BookId { get; protected set; }
 
@@ -15,11 +23,11 @@ namespace ProgLibrary.Core.Domain
         public DateTime ReservationTimeTo { get; protected set; }
         public DateTime CreatedAt { get; protected set; }
 
-        [ForeignKey("UserId")]
-        public virtual User User { get;  set; }
+        //[ForeignKey("UserId")]
+        public  User User { get; set; }
 
-        [ForeignKey("BookId")]
-        public virtual Book Book { get;  set; }
+        //[ForeignKey("BookId")]
+        public  Book Book { get; set; }
 
 
         public Reservation(Guid id, Guid userId, Guid bookId, DateTime reservationTimeFrom, DateTime reservationTimeTo )

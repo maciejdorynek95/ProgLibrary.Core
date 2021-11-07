@@ -7,7 +7,7 @@ namespace ProgLibrary.Core.DAL
     {
         public DbSet<Book> Books { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
-
+    
 
         public LibraryDbContext(DbContextOptions<LibraryDbContext> options) : base(options)
         {
@@ -18,6 +18,8 @@ namespace ProgLibrary.Core.DAL
         {
             modelBuilder.Entity<User>()
                 .ToTable("AspNetUsers", t => t.ExcludeFromMigrations());
+
+
         }
 
     }

@@ -10,26 +10,29 @@ namespace ProgLibrary.Core.Domain
 {
     public class User : IdentityUser<Guid>
     {
-        private readonly LibraryDbContext _context;
-        public User(LibraryDbContext context)
-        {
-            _context = context;
-        }
 
+        private readonly AuthenticationDbContext _authContext;
+
+        public User(AuthenticationDbContext authContext)
+        {
+            _authContext = authContext;
+        }
         [NotMapped]
         public virtual string[] Roles { get; protected set; }
-        //[NotMapped]
-        //  public IEnumerable<Reservation> Reservations => _context.Reservations.AsEnumerable();
-        [NotMapped]
-        public  IEnumerable<Reservation> Reservations { get; protected set; }
-
+        public virtual IEnumerable<Reservation> Reservations { get; protected set; }
         public User(Guid id, string name, string email)
         {
             Id = id;          
             UserName = name;
-            Email = email;
-           
+            Email = email;         
         }
+        public User(Guid id, string email, LibraryDbContext context)
+        {
+            Id = id;
+            Email = email;
+            GetReservations(context);
+        }
+        
         public void GetRoles(params string[] roles)
         {
             Roles = new string[roles.Length];
@@ -40,9 +43,9 @@ namespace ProgLibrary.Core.Domain
         }
         public void GetReservations(LibraryDbContext context)
         {
-            Reservations = context.Reservations.ToList();
+            Reservations = context.Reservations.Where(x => x.UserId == Id).AsQueryable();
         }
-      
+
 
     }
 }

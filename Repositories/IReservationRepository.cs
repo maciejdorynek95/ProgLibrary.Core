@@ -11,6 +11,8 @@ namespace ProgLibrary.Core.Repositories
         Task<Reservation> GetAsync(Guid reservationId);
         Task<Reservation> GetAsyncByBook(Guid bookId);
         [Obsolete]Task<Reservation> GetAsyncByUser(Guid bookId); // Obsolete
+
+        Task<IEnumerable<Reservation>> GetAsyncListOfReservationsByUser(Guid bookId);
         Task<IEnumerable<Reservation>> GetAsyncListOfReservationsByBook(Guid bookId);
         Task<IEnumerable<Reservation>> BrowseAsync(string filter = "");
         Task<bool> AddAsync(Reservation reservation);

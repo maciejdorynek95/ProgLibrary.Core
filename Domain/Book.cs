@@ -1,6 +1,7 @@
 ﻿using ProgLibrary.Core.DAL;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
@@ -14,15 +15,22 @@ namespace ProgLibrary.Core.Domain
         {
             _context = context;
         }
-
+        [Required]
         public string Title { get; protected set; }
+        [Required]
         public string Author { get; protected set; }
+        [Required]
         public DateTime ReleaseDate { get; protected set; }
+        [Required]
         public string Description { get; protected set; }
         public DateTime UpdatedAt { get; set; }
         [NotMapped]
         public  IEnumerable<Reservation> Reservations => _context?.Reservations?.AsEnumerable();
 
+        public Book()
+        {
+
+        }
 
         public void SetTitle(string title)
         {
